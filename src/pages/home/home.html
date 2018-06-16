@@ -6,12 +6,20 @@
 
 <ion-content padding>
   <h2>Welcome to Ionic!</h2>
+  <ion-list>
+    <ion-grid>
+      <ion-row>
+        <div *ngFor="let number of [0,1,2,3,4]">
+          <ion-col col-4>
+            <reception-card></reception-card>
+          </ion-col>
+        </div>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+
   <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
+    Take a look at the
+    <code>src/pages/</code> directory to add or change tabs, update any existing page or create new pages.
   </p>
 </ion-content>
