@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {DatabaseMethodsProvider} from '../../providers/database-methods/database-methods'
+
 
 @Component({
   selector: 'page-home',
@@ -8,9 +8,7 @@ import {DatabaseMethodsProvider} from '../../providers/database-methods/database
 })
 export class HomePage {
 
-  name : String = "";
-
-  constructor(public navCtrl: NavController, public db: DatabaseMethodsProvider) {
+  constructor(public navCtrl: NavController) {
 
   }
 
