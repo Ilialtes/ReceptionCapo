@@ -1,17 +1,48 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      En Camino
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+    <ion-grid>
+        <ion-row>
+          <div *ngFor="let order of pendingOrders | async">
+            <div *ngIf="order.state === 'pending'">
+              <ion-col col-6>
+                <div class="order-container">
+                  
+                  <ion-row>
+                    <div class="user-info">
+                      <p><img src="{{order.photoURL}}" alt="" class="circle-pic">{{order.UID}}</p>
+                    </div>
+                  </ion-row>
+                  <ion-row>
+                      <div class="address-details">
+                        <p>Dirección </p>
+                      </div>
+                    </ion-row>
+                  <ion-row>
+                    <div class="order-details">
+                      <p>Orden</p>
+                      <div *ngFor="let product of order.products">
+                        <p>{{product.name}}</p>
+                      </div>
+                      
+                    </div>
+                  </ion-row>
+                  <ion-row>
+                    <button ion-button (click)="finish(order.id)">Finalizar</button>
+                  </ion-row>
+                </div>
+              </ion-col>
+              <ion-col col-2></ion-col>
+            </div>
+          </div>
+    
+    
+        </ion-row>
+      </ion-grid>
 </ion-content>

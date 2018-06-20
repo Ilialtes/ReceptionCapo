@@ -1,25 +1,51 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Pedidos</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <ion-list>
-    <ion-grid>
-      <ion-row>
-        <div *ngFor="let number of [0,1,2,3,4]">
-          <ion-col col-4>
-            <reception-card></reception-card>
-          </ion-col>
-        </div>
-      </ion-row>
-    </ion-grid>
-  </ion-list>
 
-  <p>
-    Take a look at the
-    <code>src/pages/</code> directory to add or change tabs, update any existing page or create new pages.
-  </p>
+  <ion-grid>
+    <ion-row>
+      <div *ngFor="let order of newOrders | async">
+        <div *ngIf="order.state === 'new'">
+          <ion-col col-6>
+            <div class="order-container">
+              
+              <ion-row>
+                <div class="user-info">
+                  <p><img src="{{order.photoURL}}" alt="" class="circle-pic">{{order.UID}}</p>
+                </div>
+              </ion-row>
+              <ion-row>
+                  <div class="address-details">
+                    <p>Dirección </p>
+                  </div>
+                </ion-row>
+              <ion-row>
+                <div class="order-details">
+                  <p>Orden</p>
+                  <div *ngFor="let product of order.products">
+                    <p>{{product.name}}</p>
+                  </div>
+                  
+                </div>
+              </ion-row>
+              <ion-row>
+                <button ion-button (click)="acept(order.id)">Aceptar</button>
+                <button ion-button (click)="reject(order.id)">Rechazar</button>
+              </ion-row>
+            </div>
+          </ion-col>
+          <ion-col col-2></ion-col>
+        </div>
+      </div>
+
+
+    </ion-row>
+  </ion-grid>
+
+
+
 </ion-content>

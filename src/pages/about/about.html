@@ -1,11 +1,48 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      Pedidos finalizados
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+    <ion-grid>
+        <ion-row>
+          <div *ngFor="let order of finishedOrders | async">
+            <div *ngIf="order.state === 'finished' || order.state === 'reject'">
+              <ion-col col-6>
+                <div class="order-container">
+                  
+                  <ion-row>
+                    <div class="user-info">
+                      <p><img src="{{order.photoURL}}" alt="" class="circle-pic">{{order.UID}}</p>
+                    </div>
+                  </ion-row>
+                  <ion-row>
+                      <div class="address-details">
+                        <p>Dirección </p>
+                      </div>
+                    </ion-row>
+                  <ion-row>
+                    <div class="order-details">
+                      <p>Orden</p>
+                      <div *ngFor="let product of order.products">
+                        <p>{{product.name}}</p>
+                      </div>
+                      
+                    </div>
+                  </ion-row>
+                  <ion-row>
+                    <p>{{order.state}}</p>
+                  </ion-row>
+                </div>
+              </ion-col>
+              <ion-col col-2></ion-col>
+            </div>
+          </div>
+    
+    
+        </ion-row>
+      </ion-grid>
 </ion-content>
