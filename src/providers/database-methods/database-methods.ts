@@ -12,15 +12,15 @@ export class DatabaseMethodsProvider {
    db :any;
   constructor() {
 
-    var firebaseConfig = {
-      apiKey: "AIzaSyBw1mUcpttda1-G92daM8lRomydSDyWCcY",
-      authDomain: "il-capo-app.firebaseapp.com",
-      databaseURL: "https://il-capo-app.firebaseio.com",
-      projectId: "il-capo-app",
-      storageBucket: "il-capo-app.appspot.com",
-      messagingSenderId: "946746956474"
-    };
-    firebase.initializeApp(firebaseConfig);
+    // var firebaseConfig = {
+    //   apiKey: "AIzaSyBw1mUcpttda1-G92daM8lRomydSDyWCcY",
+    //   authDomain: "il-capo-app.firebaseapp.com",
+    //   databaseURL: "https://il-capo-app.firebaseio.com",
+    //   projectId: "il-capo-app",
+    //   storageBucket: "il-capo-app.appspot.com",
+    //   messagingSenderId: "946746956474"
+    // };
+    // firebase.initializeApp(firebaseConfig);
     this.db = firebase.database();
   }
 

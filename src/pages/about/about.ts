@@ -10,11 +10,11 @@ import { Observable } from 'rxjs';
 })
 export class AboutPage {
 
-  name : String = "";
-  items: Observable<any[]>;
+  finishedOrders: Observable<any[]>;
+
   constructor(public navCtrl: NavController, public db: AngularFireDatabase) {
-    this.items = db.list('users').valueChanges();
-    this.items.subscribe();
+    this.finishedOrders = db.list('orders').valueChanges();
+    this.finishedOrders.subscribe();
   }
 
 }

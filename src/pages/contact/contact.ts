@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'page-contact',
@@ -7,8 +9,11 @@ import { NavController } from 'ionic-angular';
 })
 export class ContactPage {
 
-  constructor(public navCtrl: NavController) {
+  pendingOrders: Observable<any[]>;
 
+  constructor(public navCtrl: NavController, public db: AngularFireDatabase) {
+    this.pendingOrders = db.list('orders').valueChanges();
+    this.pendingOrders.subscribe();
   }
 
 }
