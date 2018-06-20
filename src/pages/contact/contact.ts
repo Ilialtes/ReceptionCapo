@@ -16,4 +16,8 @@ export class ContactPage {
     this.pendingOrders.subscribe();
   }
 
+  finish(id){
+    this.db.list('orders').update(id, {state:"finished"})
+  }
+
 }

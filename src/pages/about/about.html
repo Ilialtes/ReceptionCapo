@@ -10,7 +10,7 @@
     <ion-grid>
         <ion-row>
           <div *ngFor="let order of finishedOrders | async">
-            <div *ngIf="order.state === 'finished'">
+            <div *ngIf="order.state === 'finished' || order.state === 'reject'">
               <ion-col col-6>
                 <div class="order-container">
                   
@@ -32,6 +32,9 @@
                       </div>
                       
                     </div>
+                  </ion-row>
+                  <ion-row>
+                    <p>{{order.state}}</p>
                   </ion-row>
                 </div>
               </ion-col>

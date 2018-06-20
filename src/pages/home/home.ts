@@ -18,8 +18,12 @@ export class HomePage {
 
   }
 
-  getUserData(){
-    
+  acept(id){
+    this.db.list('orders').update(id, {state:"pending"})
+  }
+
+  reject(id){
+    this.db.list('orders').update(id, {state:"reject"})
   }
 
 

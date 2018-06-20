@@ -21,7 +21,6 @@
               <ion-row>
                   <div class="address-details">
                     <p>Dirección </p>
-                    
                   </div>
                 </ion-row>
               <ion-row>
@@ -34,8 +33,8 @@
                 </div>
               </ion-row>
               <ion-row>
-                <button ion-button>Aceptar</button>
-                <button ion-button>Rechazar</button>
+                <button ion-button (click)="acept(order.id)">Aceptar</button>
+                <button ion-button (click)="reject(order.id)">Rechazar</button>
               </ion-row>
             </div>
           </ion-col>
