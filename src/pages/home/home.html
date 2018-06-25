@@ -1,15 +1,31 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
+
   <ion-navbar>
-    <ion-title>Pedidos</ion-title>
+    <ion-buttons left>
+        <img margin-top="30px" margin-left="10px" item-centered src="../../assets/imgs/logo.png" alt="" height="70" width="70">
+    </ion-buttons>
+    <ion-buttons center>
+      <button ion-button clear class="navLink" (click)="changeList(newState)">Nuevas</button>
+      <button ion-button clear class="navLink"(click)="changeList(pendingState)">Pendientes</button>
+      <button ion-button clear class="navLink" (click)="changeList(finishedState)">Entregadas</button>
+      <button ion-button clear class="navLink" (click)="changeList(rejectedState)">Rechazadas</button>
+    </ion-buttons>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
 
+<ion-content padding>
   <ion-grid>
     <ion-row>
       <div *ngFor="let order of newOrders | async">
-        <div *ngIf="order.state === 'new'">
+        <div *ngIf="order.state == state">
           <ion-col col-6>
             <div class="order-container">
               <ion-row>
@@ -17,7 +33,8 @@
               </ion-row>
               <ion-row>
                 <div class="user-info">
-                  <p>{{order.UID}}
+                  <p>{{order.user.name}}
+                      {{order.user.telephone}}
                     <img src="{{order.photoURL}}" alt="" class="circle-pic">
                   </p>
                 </div>
@@ -27,8 +44,8 @@
                   <p>MAPA</p>
                 </ion-col>
                 <ion-col>
-                  <p>{{order.anotherAddress.location}}</p>
-                  <p>{{order.anotherAddress.otherSigns}}</p>
+                  <p>{{order.address.location}}</p>
+                  <p>{{order.address.otherSigns}}</p>
                 </ion-col>
               </ion-row>
               <ion-row *ngFor="let product of order.products">
@@ -68,22 +85,22 @@
               </ion-row>
               <ion-row>
                 <ion-col col-8>
-                  <button ion-button (click)="acept(order.id)">Aceptar</button>
-                  <button ion-button (click)="reject(order.id)">Rechazar</button>
+                  <ng-container *ngIf="state == newState">
+                      <button ion-button (click)="changeState(order.id, pendingState)">Aceptar</button>
+                      <button ion-button (click)="changeState(order.id, rejectedState)">Rechazar</button>
+                  </ng-container>
+                  <ng-container *ngIf="state == pendingState">
+                      <button ion-button (click)="changeState(order.id, finishedState)">Terminar</button>
+                  </ng-container>
                 </ion-col>
                 <ion-col>
-                  <p>Total: ₡</p>
+                  <p>Total: ₡{{order.total}}</p>
                 </ion-col>
               </ion-row>
             </div>
           </ion-col>
         </div>
       </div>
-
-
     </ion-row>
   </ion-grid>
-
-
-
 </ion-content>

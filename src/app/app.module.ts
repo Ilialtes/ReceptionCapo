@@ -7,15 +7,10 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-
-import { TabsPage } from '../pages/tabs/tabs';
-import { NewOrdersPage } from '../pages/new-orders/new-orders';
-import { PendingOrdersPage } from '../pages/pending-orders/pending-orders';
-import { FinalizedOrdersPage } from '../pages/finalized-orders/finalized-orders';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DatabaseMethodsProvider } from '../providers/database-methods/database-methods';
+import { HomePage } from '../pages/home/home';
 
 var firebaseConfig = {
   apiKey: "AIzaSyBw1mUcpttda1-G92daM8lRomydSDyWCcY",
@@ -29,10 +24,7 @@ var firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    TabsPage,
-    NewOrdersPage,
-    PendingOrdersPage,
-    FinalizedOrdersPage,
+    HomePage
   ],
   imports: [
     BrowserModule,
@@ -44,10 +36,7 @@ var firebaseConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    TabsPage,
-    NewOrdersPage,
-    PendingOrdersPage,
-    FinalizedOrdersPage
+    HomePage
   ],
   providers: [
     StatusBar,
