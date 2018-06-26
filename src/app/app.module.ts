@@ -9,7 +9,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { DatabaseMethodsProvider } from '../providers/database-methods/database-methods';
 import { HomePage } from '../pages/home/home';
 
 var firebaseConfig = {
@@ -42,8 +41,7 @@ var firebaseConfig = {
     StatusBar,
     SplashScreen,
     AngularFireDatabase,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DatabaseMethodsProvider
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}

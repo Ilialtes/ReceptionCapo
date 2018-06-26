@@ -62,9 +62,7 @@
                   </ion-col>
                   <ion-col col-4>
                     <div *ngIf="product.observation !== '' || product.extras">
-                      <p (click)="showMore()">Ver mas
-                        <i class="arrow down"></i>
-                      </p>
+                      <p (click)="showMore()"> <span id="more">Ver mas...</span></p>
                     </div>
                   </ion-col>
                   <ion-col col-12 *ngIf="more && (product.observation !== '' || product.extras)">
@@ -84,16 +82,21 @@
                 </ion-row>
               </ion-row>
               <ion-row>
-                <ion-col col-8>
-                  <ng-container *ngIf="state == newState">
-                      <button ion-button (click)="changeState(order.id, pendingState)">Aceptar</button>
-                      <button ion-button (click)="changeState(order.id, rejectedState)">Rechazar</button>
+                  <ng-container *ngIf="state == newState;">
+                    <ion-col col-4>
+                        <button ion-button (click)="changeState(order.id, pendingState)">Aceptar</button>
+                    </ion-col>
+                    <ion-col col-4>
+                        <button ion-button color="danger" (click)="changeState(order.id, rejectedState)">Rechazar</button>
+                    </ion-col>
                   </ng-container>
                   <ng-container *ngIf="state == pendingState">
-                      <button ion-button (click)="changeState(order.id, finishedState)">Terminar</button>
+                    <ion-col col-8>
+                        <button ion-button (click)="changeState(order.id, finishedState)">Terminar</button>
+                    </ion-col>
                   </ng-container>
-                </ion-col>
-                <ion-col>
+                  <ng-container *ngIf="state == rejectedState || state == finishedState"><ion-col col-8></ion-col></ng-container>
+                <ion-col col-4>
                   <p>Total: ₡{{order.total}}</p>
                 </ion-col>
               </ion-row>
