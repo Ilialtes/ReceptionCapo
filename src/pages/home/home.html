@@ -41,7 +41,7 @@
               </ion-row>
               <ion-row>
                 <ion-col>
-                  <p>MAPA</p>
+                  <map [lat]='order.address.position.lat' [lng]='order.address.position.lng'></map>
                 </ion-col>
                 <ion-col>
                   <p>{{order.address.location}}</p>
@@ -60,12 +60,7 @@
                   <ion-col col-1>
                     <p>{{product.size}}</p>
                   </ion-col>
-                  <ion-col col-4>
-                    <div *ngIf="product.observation !== '' || product.extras">
-                      <p (click)="showMore()"> <span id="more">Ver mas...</span></p>
-                    </div>
-                  </ion-col>
-                  <ion-col col-12 *ngIf="more && (product.observation !== '' || product.extras)">
+                  <ion-col class="details-container" col-12 *ngIf="product.observation !== '' || product.extras">
                     <ion-row *ngIf="product.extras">
                       <ion-row *ngFor="let extra of product.extras">
                         <ion-col>

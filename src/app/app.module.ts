@@ -6,10 +6,17 @@ import { MyApp } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { Network } from '@ionic-native/network';
+import { Geolocation } from '@ionic-native/geolocation';
+import {} from '@types/googlemaps';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
+
+import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
+import { MapsConectivityProvider } from '../providers/maps-conectivity/maps-conectivity';
+import {MapComponent} from '../components/map/map';
 
 var firebaseConfig = {
   apiKey: "AIzaSyBw1mUcpttda1-G92daM8lRomydSDyWCcY",
@@ -23,7 +30,8 @@ var firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -35,13 +43,20 @@ var firebaseConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    MapComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AngularFireDatabase,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GoogleMapsProvider,
+    MapsConectivityProvider,
+    Network,
+    Geolocation,
+    GoogleMapsProvider,
+    MapsConectivityProvider
   ]
 })
 export class AppModule {}

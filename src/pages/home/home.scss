@@ -23,9 +23,20 @@ page-home {
         border-bottom: 2px solid white;
     }
 
+    .details-container{
+        display: none;
+        height: 0px;
+    }
+
     .order-container{
         border: 2px solid rgb(0, 0, 0);
         background-color: #141414;
+    }
+
+    .order-container:hover .details-container{
+        display : block;
+        height: 100%;
+        color: white;
     }
 
     #more {
@@ -51,4 +62,8 @@ page-home {
         transform: rotate(45deg);
         -webkit-transform: rotate(45deg);
     }
+
+    
+
+
 }
