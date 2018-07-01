@@ -1,7 +1,6 @@
 import { Component, ViewChild, ElementRef, NgZone, Input } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Platform } from 'ionic-angular'
-import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
 import firebase from 'firebase';
 /**
  * Generated class for the MapComponent component.
@@ -29,35 +28,47 @@ export class MapComponent {
   saveDisabled: boolean;
   location: any;
   markerPosition: any;
+  apiKey: string = "AIzaSyBw1mUcpttda1-G92daM8lRomydSDyWCcY";
+  marker: any;
+  map:google.maps.Map;
+  latLng : any;
 
   constructor(
     public zone: NgZone,
-    public maps: GoogleMapsProvider,
     public platform: Platform,
     public geolocation: Geolocation) {
+
+
+  }
+
+  ngOnInit() {
+    this.initMap()
+  }
+
+  initMap(){
+    console.log(this.lat)
    
-
+    let mapProp = {
+      center: new google.maps.LatLng(this.lat, this.lng),
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapProp);
+    this.latLng =
+    this.initMarker();
   }
 
-  ngAfterViewInit(){
-    let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement).then(() => {
-      this.autocompleteService = new google.maps.places.AutocompleteService();
-      this.placesService = new google.maps.places.PlacesService(this.maps.map);
-      this.searchDisabled = false;
-      this.setPosition();
+
+  initMarker() {
+    let self = this;
+      self.latLng = new google.maps.LatLng(this.lat, this.lng);
+    
+    this.marker = new google.maps.Marker({
+      map: this.map,
+      draggable: true,   
+      position: self.latLng
     });
-
-  }
-
-  setPosition() {
-    let position: any;
-    this.geolocation.getCurrentPosition().then((pos) => {
-      position = new google.maps.LatLng(this.lat, this.lng);
-      this.maps.map.setCenter(position)
-      this.maps.setMarker(position)
-      this.markerPosition = position;
-    });
-
+    this.marker.setPosition(self.latLng);
   }
 
 }
