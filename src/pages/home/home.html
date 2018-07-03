@@ -29,52 +29,64 @@
           <ion-col col-6>
             <div class="order-container">
               <ion-row>
-                <p>Date..</p>
-              </ion-row>
-              <ion-row>
-                <div class="user-info">
+                <div class="user-info section">
                   <p>{{order.user.name}}
                       {{order.user.telephone}}
                     <img src="{{order.photoURL}}" alt="" class="circle-pic">
                   </p>
                 </div>
               </ion-row>
-              <ion-row>
-                <ion-col>
-                  <map [lat]='order.address.position.lat' [lng]='order.address.position.lng'></map>
-                </ion-col>
-                <ion-col>
-                  <p>{{order.address.location}}</p>
-                  <p>{{order.address.otherSigns}}</p>
-                </ion-col>
-              </ion-row>
-              <ion-row *ngFor="let product of order.products">
-                <ion-row>
-
-                  <ion-col col-1>
-                    <p>{{product.quantity}}</p>
-                  </ion-col>
-                  <ion-col col-6>
-                    <p>{{product.name}}</p>
-                  </ion-col>
-                  <ion-col col-1>
-                    <p>{{product.size}}</p>
-                  </ion-col>
-                  <ion-col class="details-container" col-12 *ngIf="product.observation !== '' || product.extras">
-                    <ion-row *ngIf="product.extras">
-                      <ion-row *ngFor="let extra of product.extras">
-                        <ion-col>
-                          <p>{{extra}}</p>
-                        </ion-col>
-                      </ion-row>
+              <div class="section">
+                  <ion-row>
+                      Dirección:
                     </ion-row>
                     <ion-row>
                       <ion-col>
-                        <p>{{product.observation}}</p>
+                        <map [lat]='order.address.position.lat' [lng]='order.address.position.lng'></map>
+                      </ion-col>
+                      <ion-col>
+                        <p>{{order.address.location}}</p>
+                        <p>{{order.address.otherSigns}}</p>
                       </ion-col>
                     </ion-row>
-                  </ion-col>
-                </ion-row>
+              </div>
+              
+              <div class="section">
+                  <ion-row *ngFor="let product of order.products">
+                      <ion-row>
+      
+                        <ion-col col-1>
+                          <p>{{product.quantity}}</p>
+                        </ion-col>
+                        <ion-col col-6>
+                          <p>{{product.name}}</p>
+                        </ion-col>
+                        <ion-col col-1>
+                          <p>{{product.size}}</p>
+                        </ion-col>
+                        <ion-col class="details-container" col-12 *ngIf="product.observation !== '' || product.extras">
+                          <ion-row *ngIf="product.extras">
+                            Extras:
+                            <ion-row *ngFor="let extra of product.extras">
+                              <ion-col>
+                                <p>{{extra}}</p>
+                              </ion-col>
+                            </ion-row>
+                          </ion-row>
+                          <ion-row *ngIf="product.observation">
+                            Observaciones:
+                            <ion-col>
+                              <p>{{product.observation}}</p>
+                            </ion-col>
+                          </ion-row>
+                        </ion-col>
+                      </ion-row>
+                    </ion-row>
+
+              </div>
+              
+              <ion-row>
+                  <p>Total: ₡{{order.total}}</p>
               </ion-row>
               <ion-row>
                   <ng-container *ngIf="state == newState;">
@@ -92,7 +104,7 @@
                   </ng-container>
                   <ng-container *ngIf="state == rejectedState || state == finishedState"><ion-col col-8></ion-col></ng-container>
                 <ion-col col-4>
-                  <p>Total: ₡{{order.total}}</p>
+                  
                 </ion-col>
               </ion-row>
             </div>
