@@ -8,6 +8,11 @@ page-home {
         border-bottom: 2px solid white;
     }
 
+    .user-info.section {
+        width: 100%;
+        height: 100%;
+    }
+
     .navLink:active {
         color: white;
         border-bottom: 2px solid white;
@@ -28,16 +33,50 @@ page-home {
         height: 0px;
     }
 
+     .scroll-content {
+        padding: 0 !important;
+    }
+
+    .order:hover{
+        box-shadow: 1px 15px 28px grey;
+    }
     .order-container{
         border: 2px solid rgb(0, 0, 0);
         background-color: rgba(14,14,14,0.6);
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9), 0 6px 20px 0 rgba(0, 0, 0, 0.9);
     }
 
-    .order-container:hover .details-container{
+    .order{
+        margin: 1%;
+    }
+
+    .section.orders:hover .details-container{
         display : block;
         height: 100%;
         color: white;
+        width: 7vw;
+    }
+
+    .section.orders:hover .arrow{
+       display: none;
+    }
+
+   .col.mapContainer {
+        
+        width: 1vw;
+        height: 14vh;
+       
+
+    }
+    map #map-content:hover {
+        background: none;
+        height: 200%;
+        width: 210%;
+    }
+    
+    
+    .section.address {
+        height: 18vh;
     }
 
     #more {
@@ -49,6 +88,8 @@ page-home {
         height:50px;
         -webkit-border-radius: 100%;
         border-radius: 100%;
+        border: 2px solid white;
+        position: absolute;
     }
 
     i {

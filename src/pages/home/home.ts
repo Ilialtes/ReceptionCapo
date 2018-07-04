@@ -29,6 +29,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, public db: AngularFireDatabase) {
     this.newOrders = db.list('orders').valueChanges();
     this.newOrders.subscribe();
+   
   }
 
   changeState(id, state: string){
@@ -37,6 +38,7 @@ export class HomePage {
 
   changeList(state:string) {
     this.state = state;
+    
   }
 
   // No sirvio solo haciendo click dos veces para q lo recargue el ngFor ;(
